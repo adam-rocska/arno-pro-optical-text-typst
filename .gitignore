@@ -1,0 +1,7 @@
+*.pdf
+*.png
+*.svg
+*.html
+.DS_Store
+.typst-cache/
+
