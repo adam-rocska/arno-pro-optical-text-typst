@@ -1,4 +1,4 @@
-#import "../lib.typ": arno-pro-optical-font
+#import "/lib.typ": arno-pro-optical-font
 
 #assert.eq(arno-pro-optical-font(8.5pt), "Arno Pro Caption")
 #assert.eq(arno-pro-optical-font(8.6pt), "Arno Pro SmText")

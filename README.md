@@ -41,7 +41,12 @@ It only changes text whose current font name contains `Arno Pro`; other fonts
 pass through unchanged.
 
 ```typst
+#import "@preview/arno-pro-optical-text:0.1.0": arno-pro-optical-text
+
+#set text(font: "Arno Pro")
 #show text: arno-pro-optical-text
+
+Optically sized text.
 ```
 
 ### `arno-pro-optical-font`
@@ -79,11 +84,34 @@ Additional public references:
 
 ## Local Development
 
-Run the assertion document:
+Run the full quality-control suite:
 
 ```sh
-typst compile --root . tests/mapping.typ /tmp/arno-pro-optical-text-test.pdf
-typst compile --root . tests/show-text-rule.typ /tmp/arno-pro-optical-text-show-test.pdf
+make check
+```
+
+For CI-parity checks, install `typstyle`, `shellcheck`, `typst-package-check`,
+`tt` from Tytanic, and `typos`, then run:
+
+```sh
+make strict-check
+```
+
+The local suite validates the package metadata, compiles every `tests/*/test.typ`
+fixture, smoke-tests an `@preview/arno-pro-optical-text:0.1.0` import from a
+temporary package path, and compiles every Typst code block in this README.
+
+Individual targets are also available:
+
+```sh
+make manifest
+make test
+make smoke
+make fmt-check
+make shellcheck
+make package-check
+make tytanic
+make typos
 ```
 
 To test package-style imports before publication, place the repository at:

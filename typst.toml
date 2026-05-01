@@ -11,8 +11,13 @@ categories = ["text"]
 disciplines = ["design"]
 compiler = "0.14.0"
 exclude = [
+  "/.github/",
   "/.gitignore",
+  "/.typos.toml",
   "/CHANGELOG.md",
+  "/CONTRIBUTING.md",
+  "/Makefile",
   "/examples/",
+  "/scripts/",
   "/tests/",
 ]

@@ -1,0 +1,12 @@
+[default.extend-words]
+Arno = "Arno"
+arno = "arno"
+Laszlo = "Laszlo"
+Rocska = "Rocska"
+Scribd = "Scribd"
+SmText = "SmText"
+Smbd = "Smbd"
+Tytanic = "Tytanic"
+semver = "semver"
+typstyle = "typstyle"
+typst = "typst"

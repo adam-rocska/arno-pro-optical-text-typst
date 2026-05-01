@@ -16,4 +16,7 @@ Arno Pro body text uses the Regular optical-size face at 11 points.
 
 #text(size: 24pt)[Display text uses Arno Pro Display.]
 
-#text(weight: "semibold", size: 10pt)[Semibold small text uses Arno Pro Smbd SmText.]
+#text(
+  weight: "semibold",
+  size: 10pt,
+)[Semibold small text uses Arno Pro Smbd SmText.]

@@ -1,4 +1,4 @@
-#import "../lib.typ": arno-pro-optical-text
+#import "/lib.typ": arno-pro-optical-text
 
 #set page(width: 120mm, height: auto, margin: 12mm)
 #set text(font: "Arno Pro", size: 11pt)
