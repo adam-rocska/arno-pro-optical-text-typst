@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+script_dir=$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd)
 # shellcheck source=scripts/common.sh
 . "$script_dir/common.sh"
 
@@ -38,7 +38,7 @@ printf '%s\n' "$compiler" |
   die "package.description should stay short for Typst Universe"
 
 for key in authors license description repository keywords categories disciplines compiler; do
-  grep -Eq "^[[:space:]]*$key[[:space:]]*=" typst.toml ||
+  grep -Eq "^[[:space:]]*${key}[[:space:]]*=" typst.toml ||
     die "typst.toml is missing package.$key"
 done
 
