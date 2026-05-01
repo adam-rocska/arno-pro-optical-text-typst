@@ -44,15 +44,10 @@ jobs:
       - name: Install ShellCheck
         run: sudo apt-get update && sudo apt-get install -y shellcheck
 
-      - name: Install Typos
-        uses: taiki-e/install-action@v2.75.27
-        with:
-          tool: typos@1.46.0
-          fallback: none
-
       - name: Install Typst quality tools
         run: |
           cargo install --locked typstyle --version 0.14.4
+          cargo install --locked typos-cli --version 1.46.0
           cargo install --locked tytanic --version 0.3.3
           cargo install --locked --git https://github.com/typst/package-check.git --tag v0.4.5-1
 
