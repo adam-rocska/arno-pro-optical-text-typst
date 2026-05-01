@@ -1,0 +1,50 @@
+name: Quality
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Typst package quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust builds
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install ShellCheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Install Typst quality tools
+        run: |
+          cargo install --locked typst-cli --version 0.14.2
+          cargo install --locked typstyle
+          cargo install --locked typos-cli
+          cargo install --locked tytanic --version 0.3.3
+          cargo install --locked --git https://github.com/typst/package-check.git --tag v0.4.5
+
+      - name: Run strict quality checks
+        run: make strict-check
+
+      - name: Upload Tytanic artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tytanic-artifacts
+          path: |
+            tests/**/out
+            tests/**/diff
+          if-no-files-found: ignore
