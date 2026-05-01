@@ -31,12 +31,33 @@ trap 'rm -rf "$tmp"' EXIT INT TERM
 package_root="$tmp/packages/preview/$name/$version"
 mkdir -p "$package_root"
 
+ignore_root="$tmp/manifest-ignore"
+mkdir -p "$ignore_root"
+git -C "$ignore_root" init -q
+
+awk -F '"' '
+  /^[[:space:]]*exclude[[:space:]]*=/ {
+    inside = 1
+    next
+  }
+
+  inside && /^[[:space:]]*]/ {
+    exit
+  }
+
+  inside {
+    for (i = 2; i <= NF; i += 2) {
+      print $i
+    }
+  }
+' typst.toml >"$ignore_root/.gitignore"
+
 git ls-files | while IFS= read -r file; do
-  case "$file" in
-    .github/*|.gitignore|.typos.toml|CHANGELOG.md|CONTRIBUTING.md|Makefile|examples/*|scripts/*|tests/*)
-      continue
-      ;;
-  esac
+  if git -C "$ignore_root" -c core.excludesFile=/dev/null \
+    check-ignore --no-index -q -- "$file"
+  then
+    continue
+  fi
 
   mkdir -p "$package_root/$(dirname "$file")"
   cp "$file" "$package_root/$file"
