@@ -2,7 +2,7 @@
 
 #set page(width: 140mm, height: auto, margin: 14mm)
 #set text(font: "Arno Pro", size: 11pt)
-#show: arno-pro-optical-text
+#show text: arno-pro-optical-text
 
 = Arno Pro Optical Text
 
@@ -17,4 +17,3 @@ Arno Pro body text uses the Regular optical-size face at 11 points.
 #text(size: 24pt)[Display text uses Arno Pro Display.]
 
 #text(weight: "semibold", size: 10pt)[Semibold small text uses Arno Pro Smbd SmText.]
-

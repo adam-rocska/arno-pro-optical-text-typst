@@ -16,7 +16,7 @@ through Adobe Fonts or another license you are entitled to use.
 #import "@preview/arno-pro-optical-text:0.1.0": arno-pro-optical-text
 
 #set text(font: "Arno Pro", size: 11pt)
-#show: arno-pro-optical-text
+#show text: arno-pro-optical-text
 
 Arno Pro body text uses the Regular optical-size face here.
 
@@ -36,12 +36,12 @@ Semibold requests are mapped to Arno Pro's `Smbd` font families:
 
 ### `arno-pro-optical-text`
 
-Use this as a show rule after setting `text.font` to an Arno Pro family. It only
-changes content whose current font name contains `Arno Pro`; other fonts pass
-through unchanged.
+Use this as a `text` show rule after setting `text.font` to an Arno Pro family.
+It only changes text whose current font name contains `Arno Pro`; other fonts
+pass through unchanged.
 
 ```typst
-#show: arno-pro-optical-text
+#show text: arno-pro-optical-text
 ```
 
 ### `arno-pro-optical-font`
@@ -83,6 +83,7 @@ Run the assertion document:
 
 ```sh
 typst compile --root . tests/mapping.typ /tmp/arno-pro-optical-text-test.pdf
+typst compile --root . tests/show-text-rule.typ /tmp/arno-pro-optical-text-show-test.pdf
 ```
 
 To test package-style imports before publication, place the repository at:
