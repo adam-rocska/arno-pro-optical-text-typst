@@ -1,0 +1,37 @@
+name: Bug report
+description: Report a problem with Arno Pro optical text selection.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What went wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal Typst example
+      description: Include the smallest document that shows the issue.
+      render: typst
+    validations:
+      required: true
+  - type: input
+    id: typst-version
+    attributes:
+      label: Typst version
+      placeholder: "typst 0.14.2"
+    validations:
+      required: true
+  - type: textarea
+    id: fonts
+    attributes:
+      label: Installed Arno Pro families
+      description: Paste the relevant `typst fonts | grep "Arno Pro"` output.
+      render: text
+    validations:
+      required: false
+

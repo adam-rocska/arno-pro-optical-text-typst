@@ -37,7 +37,7 @@ printf '%s\n' "$compiler" |
 [ "${#description}" -le 80 ] ||
   die "package.description should stay short for Typst Universe"
 
-for key in authors license description keywords categories disciplines compiler; do
+for key in authors license description repository keywords categories disciplines compiler; do
   grep -Eq "^[[:space:]]*$key[[:space:]]*=" typst.toml ||
     die "typst.toml is missing package.$key"
 done
@@ -69,6 +69,7 @@ for excluded in \
   "/CONTRIBUTING.md" \
   "/Makefile" \
   "/PUBLISHING.md" \
+  "/SECURITY.md" \
   "/examples/" \
   "/scripts/" \
   "/tests/"

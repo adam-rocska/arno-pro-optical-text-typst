@@ -1,5 +1,9 @@
 # Contributing
 
+# Contributing
+
+## Local Checks
+
 Run the full local quality-control suite before changing package behavior:
 
 ```sh
@@ -38,3 +42,30 @@ Use absolute package-root imports inside tests, for example:
 ```typst
 #import "/lib.typ": arno-pro-optical-font
 ```
+
+## Pull Requests
+
+Use short-lived branches and open pull requests into `master`. Keep changes
+focused: implementation, tests, docs, and release metadata should be easy to
+review together.
+
+Before requesting review:
+
+- Run `make check`.
+- Update tests under `tests/*/test.typ` for behavior changes.
+- Update README examples when public usage changes.
+- Run `typst-package-check check` for release-facing metadata changes.
+
+The repository prefers squash merges for pull requests. Merge commits are
+disabled so `master` stays linear.
+
+## Releases
+
+For a release:
+
+- Update `version` in `typst.toml`.
+- Update package imports in docs and examples.
+- Add a `CHANGELOG.md` entry.
+- Run `make check`.
+- Run `typst-package-check check`.
+- Follow `PUBLISHING.md` for Typst Universe submission.

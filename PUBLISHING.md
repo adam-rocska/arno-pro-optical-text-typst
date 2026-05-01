@@ -12,10 +12,9 @@ Then run the official checker:
 typst-package-check check
 ```
 
-The manifest intentionally omits `repository` until the public repository URL is
-reachable. Typst's package checker validates optional URLs, so add it back only
-after the repository exists and returns HTTP 200.
+The manifest includes the public GitHub repository URL. Typst's package checker
+validates optional URLs, so keep the repository public and reachable before
+submitting to Typst Universe.
 
 The published bundle is controlled by `exclude` in `typst.toml`. Keep
 `README.md`, `LICENSE`, `lib.typ`, `src/`, and `typst.toml` in the bundle.
-
