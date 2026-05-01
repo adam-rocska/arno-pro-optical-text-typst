@@ -10,7 +10,8 @@ make check
 manifest, compiles all Typst fixtures under `tests/*/test.typ`, builds a
 temporary local package under the `preview` namespace, compiles the public
 example through that package import, and compiles every Typst code block in the
-README.
+README. When Arno Pro and `pdffonts` are available locally, it also audits the
+embedded PDF font faces.
 
 For CI parity, install the stricter optional tools and run:
 

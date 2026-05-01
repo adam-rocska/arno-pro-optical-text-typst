@@ -1,4 +1,4 @@
-.PHONY: check strict-check test smoke manifest fmt-check shellcheck package-check tytanic typos
+.PHONY: check strict-check test smoke manifest font-audit fmt-check shellcheck package-check tytanic typos
 
 check:
 	./scripts/check.sh
@@ -14,6 +14,9 @@ smoke:
 
 manifest:
 	./scripts/check-manifest.sh
+
+font-audit:
+	./scripts/font-audit.sh
 
 fmt-check:
 	typstyle --check lib.typ src tests examples

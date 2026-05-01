@@ -5,7 +5,6 @@ entrypoint = "lib.typ"
 authors = ["Adam Laszlo Rocska <@adam-rocska>"]
 license = "MIT"
 description = "Select Arno Pro optical text faces by point size."
-repository = "https://github.com/adam-rocska/arno-pro-optical-text-typst"
 keywords = ["arno-pro", "adobe", "font", "optical-sizing", "typography"]
 categories = ["text"]
 disciplines = ["design"]
@@ -17,6 +16,7 @@ exclude = [
   "/CHANGELOG.md",
   "/CONTRIBUTING.md",
   "/Makefile",
+  "/PUBLISHING.md",
   "/examples/",
   "/scripts/",
   "/tests/",

@@ -13,6 +13,7 @@ require_command typst
 "$script_dir/check-manifest.sh"
 "$script_dir/run-typst-tests.sh"
 "$script_dir/package-smoke.sh"
+"$script_dir/font-audit.sh"
 
 run_optional() {
   tool=$1

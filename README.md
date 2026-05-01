@@ -38,7 +38,8 @@ Semibold requests are mapped to Arno Pro's `Smbd` font families:
 
 Use this as a `text` show rule after setting `text.font` to an Arno Pro family.
 It only changes text whose current font name contains `Arno Pro`; other fonts
-pass through unchanged.
+pass through unchanged. If `text.font` is a fallback list, the Arno Pro entry is
+replaced in place and the remaining fallback families are preserved.
 
 ```typst
 #import "@preview/arno-pro-optical-text:0.1.0": arno-pro-optical-text
@@ -47,6 +48,17 @@ pass through unchanged.
 #show text: arno-pro-optical-text
 
 Optically sized text.
+```
+
+Fallback font lists work as expected:
+
+```typst
+#import "@preview/arno-pro-optical-text:0.1.0": arno-pro-optical-text
+
+#set text(font: ("Arno Pro", "New Computer Modern"), size: 8pt)
+#show text: arno-pro-optical-text
+
+This uses Arno Pro Caption, with New Computer Modern still available as fallback.
 ```
 
 ### `arno-pro-optical-font`
@@ -99,7 +111,8 @@ make strict-check
 
 The local suite validates the package metadata, compiles every `tests/*/test.typ`
 fixture, smoke-tests an `@preview/arno-pro-optical-text:0.1.0` import from a
-temporary package path, and compiles every Typst code block in this README.
+temporary package path, compiles every Typst code block in this README, and
+audits rendered PDF font faces when Arno Pro and `pdffonts` are available.
 
 Individual targets are also available:
 
@@ -107,12 +120,15 @@ Individual targets are also available:
 make manifest
 make test
 make smoke
+make font-audit
 make fmt-check
 make shellcheck
 make package-check
 make tytanic
 make typos
 ```
+
+See `PUBLISHING.md` for the final Typst Universe submission checklist.
 
 To test package-style imports before publication, place the repository at:
 

@@ -12,8 +12,14 @@ permissions:
 
 jobs:
   quality:
-    name: Typst package quality
+    name: Typst package quality (${{ matrix.typst-version }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        typst-version:
+          - 0.14.0
+          - 0.14.2
 
     steps:
       - name: Check out repository
@@ -30,7 +36,7 @@ jobs:
 
       - name: Install Typst quality tools
         run: |
-          cargo install --locked typst-cli --version 0.14.2
+          cargo install --locked typst-cli --version "${{ matrix.typst-version }}"
           cargo install --locked typstyle
           cargo install --locked typos-cli
           cargo install --locked tytanic --version 0.3.3
