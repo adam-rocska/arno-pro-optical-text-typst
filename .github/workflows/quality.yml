@@ -10,10 +10,15 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   quality:
     name: Typst package quality (${{ matrix.typst-version }})
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     strategy:
       fail-fast: false
       matrix:
@@ -25,6 +30,11 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
 
+      - name: Install Typst
+        uses: typst-community/setup-typst@v5.1.0
+        with:
+          typst-version: ${{ matrix.typst-version }}
+
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
 
@@ -34,13 +44,17 @@ jobs:
       - name: Install ShellCheck
         run: sudo apt-get update && sudo apt-get install -y shellcheck
 
+      - name: Install Typos
+        uses: taiki-e/install-action@v2.75.27
+        with:
+          tool: typos@1.46.0
+          fallback: none
+
       - name: Install Typst quality tools
         run: |
-          cargo install --locked typst-cli --version "${{ matrix.typst-version }}"
-          cargo install --locked typstyle
-          cargo install --locked typos-cli
+          cargo install --locked typstyle --version 0.14.4
           cargo install --locked tytanic --version 0.3.3
-          cargo install --locked --git https://github.com/typst/package-check.git --tag v0.4.5
+          cargo install --locked --git https://github.com/typst/package-check.git --tag v0.4.5-1
 
       - name: Run strict quality checks
         run: make strict-check
@@ -49,7 +63,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: tytanic-artifacts
+          name: tytanic-artifacts-${{ matrix.typst-version }}
           path: |
             tests/**/out
             tests/**/diff
