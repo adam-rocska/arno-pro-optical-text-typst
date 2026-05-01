@@ -7,7 +7,11 @@
 }
 
 #let _is-arno-pro-font(font) = {
-  _arno-pro-font-name(font).contains("arno pro")
+  if type(font) == array {
+    font.any(family => _is-arno-pro-font(family))
+  } else {
+    _arno-pro-font-name(font).contains("arno pro")
+  }
 }
 
 #let _is-arno-pro-semibold(font, weight) = {
@@ -22,6 +26,16 @@
 }
 
 #let arno-pro-optical-font(size, font: "Arno Pro", weight: "regular") = {
+  if type(font) == array {
+    return font.map(family => {
+      if _is-arno-pro-font(family) {
+        arno-pro-optical-font(size, font: family, weight: weight)
+      } else {
+        family
+      }
+    })
+  }
+
   let semibold = _is-arno-pro-semibold(font, weight)
 
   if size <= 8.5pt {
@@ -39,14 +53,15 @@
 
 #let arno-pro-optical-text(it) = context {
   if _is-arno-pro-font(text.font) {
-    set text(font: arno-pro-optical-font(
-      text.size,
-      font: text.font,
-      weight: text.weight,
-    ))
+    set text(
+      font: arno-pro-optical-font(
+        text.size,
+        font: text.font,
+        weight: text.weight,
+      ),
+    )
     it
   } else {
     it
   }
 }
-

@@ -19,5 +19,20 @@
   "Arno Pro Smbd SmText",
 )
 
-Mapping assertions passed.
+#assert.eq(
+  arno-pro-optical-font(
+    8pt,
+    font: ("Arno Pro", "New Computer Modern"),
+  ),
+  ("Arno Pro Caption", "New Computer Modern"),
+)
 
+#assert.eq(
+  arno-pro-optical-font(
+    24pt,
+    font: ("Arno Pro Smbd", "New Computer Modern"),
+  ),
+  ("Arno Pro Smbd Display", "New Computer Modern"),
+)
+
+Mapping assertions passed.
