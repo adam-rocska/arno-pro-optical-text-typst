@@ -57,13 +57,13 @@ the font explicitly.
 
 The encoded ranges are:
 
-| Size | Regular family | Semibold family |
-| --- | --- | --- |
-| `<= 8.5pt` | `Arno Pro Caption` | `Arno Pro Smbd Caption` |
-| `> 8.5pt` and `<= 10.9pt` | `Arno Pro SmText` | `Arno Pro Smbd SmText` |
-| `> 10.9pt` and `<= 14pt` | `Arno Pro` | `Arno Pro Smbd` |
-| `> 14pt` and `<= 21.5pt` | `Arno Pro Subhead` | `Arno Pro Smbd Subhead` |
-| `> 21.5pt` | `Arno Pro Display` | `Arno Pro Smbd Display` |
+| Size                      | Regular family     | Semibold family         |
+| ------------------------- | ------------------ | ----------------------- |
+| `<= 8.5pt`                | `Arno Pro Caption` | `Arno Pro Smbd Caption` |
+| `> 8.5pt` and `<= 10.9pt` | `Arno Pro SmText`  | `Arno Pro Smbd SmText`  |
+| `> 10.9pt` and `<= 14pt`  | `Arno Pro`         | `Arno Pro Smbd`         |
+| `> 14pt` and `<= 21.5pt`  | `Arno Pro Subhead` | `Arno Pro Smbd Subhead` |
+| `> 21.5pt`                | `Arno Pro Display` | `Arno Pro Smbd Display` |
 
 ## Specification Source
 
