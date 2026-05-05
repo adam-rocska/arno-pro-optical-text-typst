@@ -31,7 +31,7 @@ manifest_value() {
 }
 
 make_temp_dir() {
-  mktemp -d "${TMPDIR:-/tmp}/arno-pro-optical-text.XXXXXX"
+  mktemp -d "${TMPDIR:-/tmp}/arnoptical.XXXXXX"
 }
 
 strict_enabled() {

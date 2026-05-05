@@ -1,4 +1,4 @@
-#import "@preview/arno-pro-optical-text:0.1.0": arno-pro-optical-text
+#import "@preview/arnoptical:0.1.0": arno-pro-optical-text
 
 #set page(width: 140mm, height: auto, margin: 14mm)
 #set text(font: "Arno Pro", size: 11pt)
